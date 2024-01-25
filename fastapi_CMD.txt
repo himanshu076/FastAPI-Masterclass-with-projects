@@ -1,0 +1,6 @@
+
+#1. fast api run CMD.
+CMD - uvicorn main:app --reload
+
+#2. 
+CMD - 
