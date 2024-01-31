@@ -2,5 +2,8 @@
 #1. fast api run CMD.
 CMD - uvicorn main:app --reload
 
-#2. 
+#2. To install all requirements.txt pakages
+CMD - pip install -r requirements.txt
+
+#3. 
 CMD - 

@@ -16,8 +16,13 @@ class BlogModel(BaseModel):
   number_of_comments: int
   published: bool
   tags: list[str] = [],
-  metadata: dict[str] = {'key': 'value'}
+  metadata: dict[str, str] = {'key': 'value'}
   image: Image | None = None
+
+  # def __init__(self, **data):
+  #   super().__init__(**data)
+  #   self.tags = self.tags if self.tags is not None else []
+  #   self.metadata = self.metadata if self.metadata is not None else {'key': 'value'}
 
 @router.post('/new/{id}')
 def create_blog(blog: BlogModel, id: int, version: int = 1):
@@ -40,7 +45,7 @@ def create_comment(blog: BlogModel, id: int,
                       max_length=50,
                       regex='^[a-z\s]*$'),
                     v: list[str] | None = Query(['1.0', '1.1', '1.2']),
-                    comment_id: int = Path(None, gt=5, le=10)
+                    comment_id: int = Path(gt=5, le=10)
                   ):
   return {
     'blog': blog,
@@ -50,3 +55,6 @@ def create_comment(blog: BlogModel, id: int,
     'version': v,
     'comment_id': comment_id
   }
+
+def required_functionality():
+  return {'message': 'Learning FastApi is important'}
